@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH --partition=gpu_a100
+#SBATCH --gpus-per-node=1
+#SBATCH --job-name=medreadme
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=18
+#SBATCH --time=2:00:00
+#SBATCH --output=medreadme_%A.out
+
+# activate the environment
+source medplaba/bin/activate
+
+MODEL="roberta"
+
+# Run the script
+python src/part1medreadme.py  --model_name $MODEL 

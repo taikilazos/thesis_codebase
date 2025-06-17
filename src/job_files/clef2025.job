@@ -1,0 +1,28 @@
+#!/bin/bash
+#SBATCH --partition=gpu_a100
+#SBATCH --gpus-per-node=1
+#SBATCH --job-name=general
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=18
+#SBATCH --time=3:00:00
+#SBATCH --output=clef_%A.out
+
+
+# activate the environment
+source medplaba/bin/activate
+
+# Run the script
+
+# split the dataset into 4 parts
+# python src/part2/clef2025_split_dataset.py
+
+# For CLEF2025 task 1.1 and 1.2
+
+# This one is for the CLEF2025 task 1.1 and 1.2 (1.1 = 11, 1.2 = 12 and the second number is the partition of the dataset (1,2,3,4 and 5 is for testing))
+python src/part2/clef2025_batch.py 11 5
+
+# Combine the results
+# python src/part2/clef2025_combine_results.py output/clef2025/new_attempt --run-id UvA_11_llama31
+
+# This one is for testing the model on an example sentence just to see if it works
+# python src/part2/test_llama.py

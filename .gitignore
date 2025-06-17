@@ -1,0 +1,15 @@
+data/
+output/
+medplaba/
+output_token/
+results/
+*.out
+models/
+job_file_results/
+__pycache__/
+*.py[cod]
+cache_models/
+archive/
+job_results/
+papers/
+.env

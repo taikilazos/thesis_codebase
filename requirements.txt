@@ -1,0 +1,11 @@
+bert-score
+torch
+transformers
+datasets 
+scikit-learn
+pandas
+numpy
+tabulate
+nltk
+python-dotenv
+tqdm
