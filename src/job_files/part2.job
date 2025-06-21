@@ -1,0 +1,37 @@
+#!/bin/bash
+#SBATCH --partition=gpu_a100
+#SBATCH --gpus-per-node=1
+#SBATCH --job-name=part2
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=18
+#SBATCH --time=24:00:00
+#SBATCH --output=part2_%A.out
+
+# activate the environment
+source medplaba/bin/activate
+
+# Run the script
+
+# PART 2 experiment for document-level prompt effectiveness
+
+# This one is for testing the metrics
+# python src/part2/test_metrics.py
+
+# This one is for testing the model
+# python src/part2/test_llama.py
+# python src/part2/test_medicine_llama.py
+
+# This one is for simplifying the dataset for document-level simplification
+# Basically two arguments can be changed:
+# --model_name: the model to use [meta-llama/Llama-3.1-8B-Instruct, instruction-pretrain/medicine-Llama3-8B]
+# --prompt_type: the prompt type to use ['simple', 'jargon', 'gt_jargons', 'gt_actions']
+
+python src/part2/simplify.py \
+  --dataset_root /home/tpapandroeu/reproducibility/data/PLABA_2024-Task_1 \
+  --reference_system NLM_4 \
+  --output_dir /home/tpapandroeu/reproducibility/output/part2 \
+  --prompt_type gt_actions \
+  --max_abstracts 100 \
+  --model_name meta-llama/Llama-3.1-8B-Instruct \
+  --cache_dir /scratch-shared/tpapandroeu/hf_cache
+

@@ -2,7 +2,8 @@ import argparse
 import torch
 import os
 import json
-from transformers import AutoModelForTokenClassification, AutoTokenizer, AdamW
+from transformers import AutoModelForTokenClassification, AutoTokenizer
+from torch.optim import AdamW
 from torch.utils.data import Dataset, DataLoader
 from tqdm import tqdm
 import nltk

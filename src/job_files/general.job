@@ -13,28 +13,25 @@ source medplaba/bin/activate
 
 # Run the script
 
-# PART 2 experiment for sentence-level prompt effectiveness
-
-# This one creates the dataset for sentence-level simplification
-# python src/part2/generate_references.py --mode threshold --threshold 2
+# PART 2 experiment for document-level prompt effectiveness
 
 # This one is for testing the metrics
 # python src/part2/test_metrics.py
 
 
-# This one is for simplifying the dataset for sentence-level simplification
+# This one is for simplifying the dataset for document-level simplification
 # Basically two arguments can be changed:
 # --model_name: the model to use [meta-llama/Llama-3.1-8B-Instruct, ...]
 # --prompt_type: the prompt type to use [simple, jargon, few_shot, combined]
 
 python src/part2/simplify.py \
-  --data_path data/PLABA_2024-Task_1/sentence_pairs/simplification_pairs_threshold.parquet \
+  --dataset_root /path/to/PLABA_2024-Task_1 \
+  --reference_system NLM_1 \
+  --output_dir /path/to/output_dir \
+  --prompt_type combined \
+  --max_abstracts 2 \
   --model_name meta-llama/Llama-3.1-8B-Instruct \
-  --prompt_type jargon \
-  --output_dir output/simplification \
-  --cache_dir /scratch-shared/tpapandroeu/hf_cache \
-  --phase 1 \
-  --debug
+  --cache_dir /scratch-shared/tpapandroeu/hf_cache
 
 # python src/part2/simplify.py \
 #   --data_path data/PLABA_2024-Task_1/sentence_pairs/simplification_pairs_threshold.parquet \
