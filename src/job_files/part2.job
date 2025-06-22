@@ -30,8 +30,8 @@ python src/part2/simplify.py \
   --dataset_root /home/tpapandroeu/reproducibility/data/PLABA_2024-Task_1 \
   --reference_system NLM_4 \
   --output_dir /home/tpapandroeu/reproducibility/output/part2 \
-  --prompt_type gt_actions \
-  --max_abstracts 100 \
+  --prompt_type gt_jargons \
   --model_name meta-llama/Llama-3.1-8B-Instruct \
-  --cache_dir /scratch-shared/tpapandroeu/hf_cache
+  --cache_dir /scratch-shared/tpapandroeu/hf_cache \
+  # --max_abstracts 100
 
